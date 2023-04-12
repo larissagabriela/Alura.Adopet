@@ -11,7 +11,7 @@ try
     switch (args[0].Trim())
     {
         case "import":
-            List<Pet> listaDePet = new List<Pet>();
+            List<Pet> listaDePet = new List<Pet>(); 
 
             // args[1] é o caminho do arquivo a ser importado
             using (StreamReader sr = new StreamReader(args[1]))
