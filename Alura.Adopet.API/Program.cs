@@ -35,6 +35,7 @@ eventoService.GenerateFakeDate();
 app.UseSwagger();
 
 //Endpoints
+/*
 app.MapPost("/proprietario/add", ([FromServices] ClienteRepository repo, [FromBody] Cliente proprietario) =>
 {
     return repo.Adicionar(proprietario);
@@ -44,7 +45,7 @@ app.MapGet("/proprietario/list", ([FromServices] ClienteRepository repo) =>
 {
     return repo.ObterTodos();
 });
-
+*/
 app.MapPost("/pet/add", ([FromServices] PetRepository repo, [FromBody] Pet pet) => {
     return repo.Adicionar(pet);
 });
