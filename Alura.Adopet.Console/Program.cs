@@ -11,7 +11,8 @@ try
     switch (args[0].Trim())
     {
         case "import":
-            await ImportAsync(caminhoDoArquivo: args[1]);
+            var import = new Import();
+            await import.ImportarPetsAsync(caminhoDoArquivo: args[1]);
             break;
         case "help":
             if (args.Length == 2)
@@ -24,7 +25,8 @@ try
             }
             break;
         case "show":
-            Show(caminhoDoArquivo: args[1]);
+            var show = new Show();
+            show.MostrarArquivo(caminhoDoArquivo: args[1]);
             break;
         case "list":
             await ListAsync(client);
@@ -71,41 +73,6 @@ async Task<IEnumerable<Pet>?> ListPetsAsync()
     return await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
 }
 
-async Task ImportAsync(string caminhoDoArquivo)
-{
-    List<Pet> listaDePet = new List<Pet>();
-
-    // args[1] é o caminho do arquivo a ser importado
-    using (StreamReader sr = new StreamReader(caminhoDoArquivo))
-    {
-        while (!sr.EndOfStream)
-        {
-            // separa linha usando ponto e vírgula
-            string[] propriedades = sr.ReadLine().Split(';');
-            // cria objeto Pet a partir da separação
-            Pet pet = new Pet(Guid.Parse(propriedades[0]),
-              propriedades[1],
-              TipoPet.Cachorro
-             );
-
-            Console.WriteLine(pet);
-            listaDePet.Add(pet);
-        }
-    }
-    foreach (var pet in listaDePet)
-    {
-        try
-        {
-            var resposta = await CreatePetAsync(pet);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
-    Console.WriteLine("Importação concluída!");
-}
-
 void Help()
 {
     Console.WriteLine("Lista de comandos.");
@@ -137,26 +104,6 @@ void HelpDoComando(string comando)
     {
         Console.WriteLine(" adopet list  comando que " +
             "exibe no terminal o conteúdo da base de dados da AdoPet.");
-    }
-}
-
-void Show(string caminhoDoArquivo)
-{
-    // args[1] é o caminho do arquivo a ser exibido
-    using (StreamReader sr = new StreamReader(caminhoDoArquivo))
-    {
-        Console.WriteLine("----- Serão importados os dados abaixo -----");
-        while (!sr.EndOfStream)
-        {
-            // separa linha usando ponto e vírgula
-            string[] propriedades = sr.ReadLine().Split(';');
-            // cria objeto Pet a partir da separação
-            Pet pet = new Pet(Guid.Parse(propriedades[0]),
-            propriedades[1],
-            TipoPet.Cachorro
-            );
-            Console.WriteLine(pet);
-        }
     }
 }
 
