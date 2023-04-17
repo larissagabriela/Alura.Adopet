@@ -10,21 +10,12 @@ namespace Alura.Adopet.Console
     {
         public void MostrarArquivo(string caminhoDoArquivo)
         {
-            // args[1] é o caminho do arquivo a ser exibido
-            using (StreamReader sr = new StreamReader(caminhoDoArquivo))
+            LeitorDeArquivos leitor = new LeitorDeArquivos();
+            var listaDePets = leitor.RealizaLeitura(caminhoDoArquivo);
+
+            foreach (Pet pet in listaDePets)
             {
-                System.Console.WriteLine("----- Serão importados os dados abaixo -----");
-                while (!sr.EndOfStream)
-                {
-                    // separa linha usando ponto e vírgula
-                    string[] propriedades = sr.ReadLine().Split(';');
-                    // cria objeto Pet a partir da separação
-                    Pet pet = new Pet(Guid.Parse(propriedades[0]),
-                    propriedades[1],
-                    TipoPet.Cachorro
-                    );
-                    System.Console.WriteLine(pet);
-                }
+                System.Console.WriteLine(pet);
             }
         }
     }
