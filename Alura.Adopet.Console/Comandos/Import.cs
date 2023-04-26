@@ -5,8 +5,10 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Alura.Adopet.Console.Servicos;
+using Alura.Adopet.Console.Util;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
     internal class Import
     {
@@ -31,6 +33,6 @@ namespace Alura.Adopet.Console
             System.Console.WriteLine("Importação concluída!");
         }
 
-        
+
     }
 }
