@@ -10,6 +10,7 @@ using Alura.Adopet.Console.Utils;
 
 namespace Alura.Adopet.Console.Comandos
 {
+    [Utils.DocComando(Instrucao = "import", Documentacao = "adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
     internal class Import
     {
         HttpClient client;

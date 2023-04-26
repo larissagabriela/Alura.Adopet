@@ -9,6 +9,7 @@ using Alura.Adopet.Console.Modelos;
 
 namespace Alura.Adopet.Console.Comandos
 {
+    [Utils.DocComando(Instrucao = "list", Documentacao = "adopet list  comando que exibe no terminal o conteúdo importado no servidor.")]
     internal class List
     {
         HttpClient client;
