@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Alura.Adopet.Console.Comandos
 {
     [Utils.DocComando(Instrucao = "help", Documentacao = "adopet help [comando] para obter mais informações sobre um comando.")]
-    internal class Help
+    internal class Help : IComando
     {
         private readonly Dictionary<string, string> comandos = new();
         public Help()
@@ -54,6 +54,19 @@ namespace Alura.Adopet.Console.Comandos
         public void HelpDoComando(string comando)
         {
             System.Console.WriteLine("\t" + comandos[comando]);
+        }
+
+        public Task ExecuteAsync(string[] args)
+        {
+            if (args.Length == 2)
+            {
+                this.HelpDoComando(comando: args[1]);
+            }
+            else
+            {
+                this.Documentacao();
+            }
+            return Task.CompletedTask;
         }
     }
 }

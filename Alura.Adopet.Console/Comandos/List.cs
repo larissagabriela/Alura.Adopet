@@ -10,7 +10,7 @@ using Alura.Adopet.Console.Modelos;
 namespace Alura.Adopet.Console.Comandos
 {
     [Utils.DocComando(Instrucao = "list", Documentacao = "adopet list  comando que exibe no terminal o conteúdo importado no servidor.")]
-    internal class List
+    internal class List : IComando
     {
         HttpClient client;
 
@@ -41,6 +41,11 @@ namespace Alura.Adopet.Console.Comandos
                 new MediaTypeWithQualityHeaderValue("application/json"));
             _client.BaseAddress = new Uri(url);
             return _client;
+        }
+
+        public Task ExecuteAsync(string[] args)
+        {
+            return this.ListarPetsAsync();
         }
     }
 }
