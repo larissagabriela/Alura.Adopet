@@ -15,15 +15,22 @@ namespace Alura.Adopet.Console.Comandos
         public Help()
         {
             Assembly
+                // no projeto atual...
                 .GetExecutingAssembly()
+                // ...pegue todos os tipos...
                 .GetTypes()
+                // ...que possuem o atributo DocComando...
                 .Where(t => t.GetCustomAttributes<Utils.DocComando>().Any())
+                // ...e transforme a lista de Type -> DocComando
                 .Select(t => t.GetCustomAttribute<Utils.DocComando>())
+                // ...execute em memória
                 .ToList()
+                // ...para cada DocComando..
                 .ForEach(doc =>
                 {
                     if (doc != null)
                     {
+                        // ... adicione no dicionário
                         comandos.Add(doc.Instrucao, doc.Documentacao);
                     }
                 });
