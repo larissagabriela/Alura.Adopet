@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Alura.Adopet.Console
-{
-    [DocComando($" adopet help [comando] para obter mais informações sobre um comando.")]
+{    
     internal class Help
     {
         private Dictionary<string, object> comandos;
+        private string Documentacao { get; set; } = "$ adopet help [comando] para obter mais informações sobre um comando.";
 
         public Help()
         {
@@ -42,8 +42,7 @@ namespace Alura.Adopet.Console
             System.Console.WriteLine("Adopet (1.0) - Aplicativo de linha de comando (CLI).");
             System.Console.WriteLine("Realiza a importação em lote de um arquivos de pets.");
             System.Console.WriteLine("Comando possíveis: ");
-            var doc = this.GetType().GetCustomAttributes<DocComando>().FirstOrDefault();
-            System.Console.WriteLine(doc.Documentacao);
+            System.Console.WriteLine(this.Documentacao);
             foreach (var cmd in comandos)
             {                
                System.Console.WriteLine(this.RecuperaDocumentacao(cmd.Value));
