@@ -5,9 +5,8 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-using Alura.Adopet.Console.Modelos;
 
-namespace Alura.Adopet.Console.Comandos
+namespace Alura.Adopet.Console
 {
     internal class List
     {
