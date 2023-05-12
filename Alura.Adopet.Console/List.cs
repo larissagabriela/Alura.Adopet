@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console
 {
+    [DocComando("adopet list  comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
     internal class List
     {
         HttpClient client;
