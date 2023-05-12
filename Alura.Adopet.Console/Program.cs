@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using Alura.Adopet.Console;
+using Alura.Adopet.Console.Comandos;
 
 Console.ForegroundColor = ConsoleColor.Green;
 try
@@ -10,26 +11,19 @@ try
     {
         case "import":
             var import = new Import();
-            await import.ImportarPetsAsync(caminhoDoArquivo: args[1]);
+            await import.ExecutarAsync(args);
             break;
         case "help":
             var help = new Help();
-            if (args.Length == 2)
-            {
-                help.HelpDoComando(comando: args[1]);
-            }
-            else
-            {
-                help.Documentacao();
-            }
+            help.ExecutarAsync(args);
             break;
         case "show":
             var show = new Show();
-            show.MostrarArquivo(caminhoDoArquivo: args[1]);
+            show.ExecutarAsync(args);
             break;
         case "list":
             var list = new List();
-            await list.ListarPetsAsync();
+            await list.ExecutarAsync(args);
             break;
         default:
             // exibe mensagem de comando inválido
