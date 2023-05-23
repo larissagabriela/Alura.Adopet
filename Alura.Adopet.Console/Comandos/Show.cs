@@ -9,7 +9,7 @@ using Alura.Adopet.Console.Util;
 namespace Alura.Adopet.Console.Comandos
 {
     [DocComando($" adopet show   <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.")]
-    internal class Show : IComandos
+    internal class Show : IComando
     {
         public Task ExecutarAsync(string[] args)
         {

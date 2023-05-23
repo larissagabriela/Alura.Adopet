@@ -10,7 +10,7 @@ namespace Alura.Adopet.Console.Comandos
 {
     [DocComando("adopet help < parametro > ous simplemente adopet help  " +
                     "comando que exibe informações de ajuda dos comandos.")]
-    internal class Help : IComandos
+    internal class Help : IComando
     {
         private Dictionary<string, object> comandos;
 

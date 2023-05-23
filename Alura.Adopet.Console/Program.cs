@@ -1,35 +1,21 @@
-﻿using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using Alura.Adopet.Console;
-using Alura.Adopet.Console.Comandos;
+﻿using Alura.Adopet.Console.Comandos;
+
+Dictionary<string, IComando> comandosDoSistema = new()
+{
+    {"help", new Help() },
+    {"list", new List() },
+    {"import", new Import() },
+    {"show", new Show() }
+};
 
 Console.ForegroundColor = ConsoleColor.Green;
 try
 {
     // args[0] é o comando a ser executado pelo programa
-    switch (args[0].Trim())
-    {
-        case "import":
-            var import = new Import();
-            await import.ExecutarAsync(args);
-            break;
-        case "help":
-            var help = new Help();
-            help.ExecutarAsync(args);
-            break;
-        case "show":
-            var show = new Show();
-            show.ExecutarAsync(args);
-            break;
-        case "list":
-            var list = new List();
-            await list.ExecutarAsync(args);
-            break;
-        default:
-            // exibe mensagem de comando inválido
-            Console.WriteLine("Comando inválido!");
-            break;
-    }
+    IComando? comando = comandosDoSistema[args[0]];
+    if (comando != null) await comando.ExecutarAsync(args);
+    else Console.WriteLine("Comando inválido");
+
 }
 catch (Exception ex)
 {

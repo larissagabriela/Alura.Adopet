@@ -11,7 +11,7 @@ using Alura.Adopet.Console.Util;
 namespace Alura.Adopet.Console.Comandos
 {
     [DocComando($" adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
-    internal class Import : IComandos
+    internal class Import : IComando
     {
         public async Task ExecutarAsync(string[] args)
         {

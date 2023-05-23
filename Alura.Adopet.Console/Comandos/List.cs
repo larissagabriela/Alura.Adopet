@@ -10,7 +10,7 @@ using Alura.Adopet.Console.Modelos;
 namespace Alura.Adopet.Console.Comandos
 {
     [DocComando("adopet list  comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
-    internal class List : IComandos
+    internal class List : IComando
     {
         HttpClient client;
 
