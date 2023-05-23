@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console
 {
-    [DocComando($" adopet show   <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.")]
+    [DocComando(
+        instrucao: "show",
+        documentacao: " adopet show <arquivo> comando que exibe no terminal o conteúdo do arquivo importado."
+    )]
     internal class Show
     {
         public void MostrarArquivo(string caminhoDoArquivo)

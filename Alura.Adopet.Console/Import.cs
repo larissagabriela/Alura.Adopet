@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console
 {
-    [DocComando($" adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
+    [DocComando(
+        instrucao: "import",
+        documentacao: " adopet import <arquivo> comando que realiza a importação do arquivo de pets."
+    )]
     internal class Import
     {
         public async Task ImportarPetsAsync(string caminhoDoArquivo)
