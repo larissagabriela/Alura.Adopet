@@ -1,0 +1,1 @@
+Projeto Adopet em C#: uma aplicação desenvolvida como parte dos estudos na plataforma Alura, que implementa um sistema de adoção de pets com uma API e uma aplicação console utilizando C#. O projeto tem como objetivo praticar conceitos de backend, arquitetura de software e integração entre serviços, consolidando conhecimentos adquiridos na formação.
